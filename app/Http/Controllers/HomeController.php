@@ -13,7 +13,6 @@ class HomeController extends Controller
         protected $model;
     public function index()
     {
-        dd('teste');
             
         $empresa = Empresas::get();
 
