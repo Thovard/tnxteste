@@ -13,6 +13,7 @@ class HomeController extends Controller
         protected $model;
     public function index()
     {
+        dd('teste');
             
         $empresa = Empresas::get();
 
@@ -39,6 +40,7 @@ class HomeController extends Controller
     }
     public function store(StoreUpdateEmpresasFormRequest $request)
     {
+            
         //dd($request->all());
 
         $data = $request->all();
