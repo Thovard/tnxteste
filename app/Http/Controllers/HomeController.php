@@ -28,9 +28,13 @@ class HomeController extends Controller
     }
     public function show($id)
     {
+
+        //dd('teste');
         
-       // dd($id);
-        return view('home.empresa.EmpresaHome');
+        if (!$empresa = Empresas::find($id))
+            return redirect()->route('home.index');
+
+        return view('home.empresa.EmpresaHome', compact('empresa'));
     }
     public function create()
     {

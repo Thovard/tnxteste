@@ -20,10 +20,16 @@
 @foreach ($empresa as $empresas)
 
 <tr>
-    <td>{{$empresas->name}}</td>
-    <td></td>
-    <td></td>
-    <a href=""></a>
+    <td>
+        {{$empresas->name}}
+    </td>
+    <td>
+        <a href="{{route('home.show', $empresas->id)}}">acessar empresa</a>
+    </td>
+    <td>
+
+    </td>
+    <a href="" ></a>
 </tr>
 
 @endforeach

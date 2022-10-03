@@ -1,5 +1,8 @@
-<h1>Cadastro de empresa</h1>
+<h1>Cadastro de empresa h4</h1>
 
+<h3>
+    <a href="Back">Voltar</a>
+</h3>
 
 
 @if ($errors->any())
@@ -11,7 +14,7 @@
 
 @endif
 <div>
-<form action="{{ route('home.store') }}" method="post">
+    <form action="{{ route('home.store') }}" method="post">
 @csrf
     <input type="text" name="name" placeholder="Nome:">
     <input type="text" name="CNPJ" placeholder="CNPJ:">
@@ -22,3 +25,4 @@
 </form>
 
 </div>
+
