@@ -10,13 +10,20 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-        protected $model;
-    public function index()
-    {
-            
-        $empresa = Empresas::get();
+    protected $model;
 
-      //dd($empresa);
+    public function __construct(Empresas $empresa)
+    {
+        $this->model = $empresa;
+    }
+    
+
+    public function index(Request $request)
+    {
+        $empresa = 
+        $this->model->where('name', 'LIKE', "%{$request->search}%")
+        ->get();
+
         
         return view('home.index', compact('empresa'));
     }
@@ -31,7 +38,7 @@ class HomeController extends Controller
 
         //dd('teste');
         
-        if (!$empresa = Empresas::find($id))
+        if (!$empresa = $this->model->find($id))
             return redirect()->route('home.index');
 
         return view('home.empresa.EmpresaHome', compact('empresa'));
@@ -49,7 +56,7 @@ class HomeController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
 
-        Empresas::create($data);
+        $this->model->create($data);
 
         return redirect()->route('home.index');
     }

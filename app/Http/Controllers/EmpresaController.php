@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
 {
+
+    protected $model;
+
+    public function __construct(Empresas $empresa)
+    {
+        $this->model = $empresa;
+    }
+    
     public function edit($id)
     {
-    if (!$empresa = Empresas::find($id))
+    if (!$empresa = $this->model->find($id))
     return redirect()->route('home.index');
 
 
@@ -20,7 +28,7 @@ class EmpresaController extends Controller
     public function update(Request $request, $id)
     {
 
-    if (!$empresa = Empresas::find($id))
+    if (!$empresa = $this->model->find($id))
         return redirect()->route('home.index');
 
         $data = $request->only('name','CNPJ','Telefone');
@@ -30,6 +38,20 @@ class EmpresaController extends Controller
         $empresa->update($data);
 
         return redirect()->route('home.index');
+        
+    }
+
+    public function delete($id)
+    {
+
+    if (!$empresa = $this->model->find($id))
+        return redirect()->route('home.index');
+
+        $empresa->delete();
+
+        return redirect()->route('home.index');
+
+
         
     }
 }

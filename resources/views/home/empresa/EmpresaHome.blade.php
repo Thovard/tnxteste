@@ -1,45 +1,51 @@
-<H1>
-    Acesso a Home da Empresa: {{ $empresa->name }}
+@extends('layouts.app')
 
-</H1>
-<h2>
-    <a href="{{ route('empresa.edit', $empresa->id) }}">Editar</a>
-    |
-    <a href="#">Deletar</a>
-    |
-    <a href="back">Voltar</a>
-</h2>
+@section('content')
 
-<table>
-    <tr>
-        <td>
-            Nome Funcionario
-        </td>
-        <td>
-            CPF
-        </td>
-        <td>
-            <a href="">Criar</a>
-        </td>
+        <H1>
+            Acesso a Home da Empresa: {{ $empresa->name }}
 
-    </tr>
-    <tr>
-        <td>
+        </H1>
+        <h2>
+            
+        <a href="back" class="teste02">Voltar</a>
+        |
+            <a href="{{ route('empresa.edit', $empresa->id) }}">Editar</a>
+        </h2>
 
-        </td>
-    </tr>
-</table>
+        <table>
+            <tr>
+                <td>
+                    Nome Funcionario
+                </td>
+                <td>
+                    CPF
+                </td>
+                <td>
+                    <a href="">Criar</a>
+                </td>
 
-<table>
-    <tr>
-        <td>
-            Nome Produto
-        </td>
-        <td>
-            Valor
-        </td>
-        <td>
+            </tr>
+            <tr>
+                <td>
 
-        </td>
-    </tr>
-</table>
+                </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td>
+                    Nome Produto
+                </td>
+                <td>
+                    Valor
+                </td>
+                <td>
+                    <a href="#">Criar</a>
+                </td>
+            </tr>
+    </table>
+
+
+@endsection
