@@ -1,4 +1,4 @@
-<h1>Cadastro de empresa h4</h1>
+<h1>Cadastro de empresa</h1>
 
 <h3>
     <a href="Back">Voltar</a>

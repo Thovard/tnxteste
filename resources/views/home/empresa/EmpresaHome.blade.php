@@ -1,46 +1,45 @@
 <H1>
-    Acesso a Empresa: {{ $empresa->name}}
+    Acesso a Home da Empresa: {{ $empresa->name }}
 
-    Editar
 </H1>
 <h2>
+    <a href="{{ route('empresa.edit', $empresa->id) }}">Editar</a>
+    |
+    <a href="#">Deletar</a>
+    |
     <a href="back">Voltar</a>
 </h2>
 
 <table>
     <tr>
-        <td>    
+        <td>
             Nome Funcionario
         </td>
-        <td>    
+        <td>
             CPF
         </td>
-        <td>    
-            vendas
-        </td>
-        <td>    
-        <a href="">Criar</a>
+        <td>
+            <a href="">Criar</a>
         </td>
 
     </tr>
-    <tr>    
-        <td>    
+    <tr>
+        <td>
 
         </td>
     </tr>
 </table>
 
-<table> 
-    <tr>    
-        <td>    
+<table>
+    <tr>
+        <td>
             Nome Produto
         </td>
-        <td>    
+        <td>
             Valor
         </td>
-        <td>    
+        <td>
 
         </td>
     </tr>
 </table>
-

@@ -5,7 +5,7 @@
     central de empresas
 
 </h1>
-<h2><a href="{{route('empresa.cadastroEmpresa') }}"> Cadastrar</a></h2>
+<h3><a href="{{route('empresa.cadastroEmpresa') }}"> Cadastrar</a></h3>
 
 <div>
 <table>
@@ -24,12 +24,14 @@
         {{$empresas->name}}
     </td>
     <td>
-        <a href="{{route('home.show', $empresas->id)}}">acessar empresa</a>
+        
     </td>
     <td>
 
     </td>
-    <a href="" ></a>
+    <td>
+        <a href="{{route('home.show', $empresas->id)}}">acessar empresa</a>
+    </td>
 </tr>
 
 @endforeach
