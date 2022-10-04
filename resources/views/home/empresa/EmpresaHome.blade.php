@@ -2,47 +2,41 @@
 
 @section('content')
 
-        <H1>
+        <H1 class="text-3xl font-semibold leading-tigh py-2">
             Acesso a Home da Empresa: {{ $empresa->name }}
 
-        </H1>
-        <h2>
-            
-        <a href="back" class="teste02">Voltar</a>
-        |
-            <a href="{{ route('empresa.edit', $empresa->id) }}">Editar</a>
-        </h2>
+        </H1>            
+        <a href="back" class=" bg-sky-600 rounded-full py-2 px-6">Voltar</a>
 
-        <table>
+            <a href="{{ route('empresa.edit', $empresa->id) }}" class=" bg-emerald-400 rounded-full py-2 px-6">Editar</a>   
+
+
+         <div>
+        <table class="min-w-[50%] leading-normal shadow-md rounded-lg overflow-hidden">
             <tr>
-                <td>
+                <td class="px-2 py-3 border-4 border-gray-300 bg-gray-200 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                     Nome Funcionario
                 </td>
-                <td>
+                <td class="px-5 py-3 border-4 border-gray-300 bg-gray-200 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"> 
                     CPF
                 </td>
-                <td>
-                    <a href="">Criar</a>
-                </td>
-
-            </tr>
-            <tr>
-                <td>
-
+                <td class="px-5 py-3 border-4 border-gray-300 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    <a href="" class="bg-green-200 rounded-full py-2 px-6 ">Criar</a>
                 </td>
             </tr>
         </table>
+    </div>
 
-        <table>
+<table class="min-w-[50%] leading-normal shadow-md rounded-lg overflow-hidden">
             <tr>
-                <td>
-                    Nome Produto
+                <td class="px-2 py-3 border-4 border-gray-300 bg-gray-200 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                    Nome Produto     
                 </td>
-                <td>
+                <td class="px-5 py-3 border-4 border-gray-300 bg-gray-200 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                     Valor
                 </td>
-                <td>
-                    <a href="#">Criar</a>
+                <td class="px-5 py-3 border-4 border-gray-300 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"> 
+                    <a href="#" class="bg-green-200 rounded-full py-2 px-6 ">Criar</a>
                 </td>
             </tr>
     </table>

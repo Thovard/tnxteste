@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') - Empresa</title>
     
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 

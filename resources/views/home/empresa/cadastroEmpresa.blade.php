@@ -2,10 +2,10 @@
 
 @section('content')
 
-<h1>Cadastro de empresa</h1>
+<h1 class="text-2xl font-semibold leading-tigh py-2">Cadastro de empresa</h1>
 
 <h3>
-    <a href="Back">Voltar</a>
+    <a href="back" class=" bg-sky-600 rounded-full py-2 px-6">Voltar</a>
 </h3>
 
 @include('includes.validations-form')

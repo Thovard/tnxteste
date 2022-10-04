@@ -2,7 +2,16 @@
 
 @section('content')
 
-<h1 class="text-2xl font-semibold leading-tigh py-2 text-decoration: underline">Editando a empresa {{ $empresa->name }}</h1>
+<h1 
+class="text-center text-3xl font-semibold leading-tigh py-2 text-decoration: underline">
+    Editando a Empresa: 
+    {{ $empresa->name }}
+    <button type="submit" 
+    class="absolute top-3 right-12 h-auto w-auto shadow bg-purple-500 hover:bg-purple-400 text-sm focus:shadow-outline focus:outline-none text-white font-bold py-2 px-2 rounded ">
+    Deletar Empresa
+</button>
+</h1>
+
 
 @if($errors->any())
     <ul class='errors'>
@@ -23,9 +32,8 @@
     <form action="{{ route('emrpesa.delete', $empresa->id) }}" method="POST">
                 @method('DELETE')
                 @csrf
-                <h2>
-                    <button type="submit" class="w-full shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">Deletar Empresa</button>
-                </h2>
+                    
+
     </form>
     </div>
 
