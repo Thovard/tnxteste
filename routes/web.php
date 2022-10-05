@@ -20,7 +20,8 @@ Route::delete('users/{id}', [EmpresaController::class, 'delete'])->name('emrpesa
 route::get('/home/{name}/VendedorHome', [VendedorController::class, 'index'])->name('vendedor.index');
 
 route::get('/home/{name}/VendedorCadastro', [VendedorController::class, 'create_vendedor'])->name('vendedor.cadastro');
-    route::put('/home', [VendedorController::class, 'store_vendedor'])->name('home.store-vendedor');
+
+route::post('/home', [VendedorController::class, 'store_vendedor'])->name('home.store-vendedor');
 
 
 

@@ -28,23 +28,23 @@ class StoreUpdateVendedorFormRequest extends FormRequest
                 'required',
                 'string',
                 'max:255',
-                'min:3',
+                'min:3'
             ],
             'CPF' => [
                 'required',
                 'string',
                 'max:18',
-                'min:13',
+                'min:13'
             ],
             'Telefone' => [
                 'nullable',
                 'string',
                 'max:12',
-                'min:8',
+                'min:8'
             ],
             'password' => [
                 'required',
-                'max:25',
+                'max:25'
             ]
         ];
     }

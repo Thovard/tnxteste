@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateVendedorFormRequest;
-use App\Models\Empresas;
-use App\Models\Vendedor;
+use App\Models\{
+    Empresas,
+    Vendedor
+};
+
 use Illuminate\Http\Request;
 
 class VendedorController extends Controller
@@ -12,9 +15,10 @@ class VendedorController extends Controller
 
     protected $model;
 
-    public function __construct(Vendedor $vendedor)
+    public function __construct(Vendedor $vendedor, Empresas $empresa)
     {
-        $this->model = $vendedor;
+        $this->vendedor = $vendedor;
+        $this->empresa = $empresa;
 
     
     }
@@ -23,7 +27,7 @@ class VendedorController extends Controller
         dd('teste');
     }
 
-    public function create_vendedor(Empresas $empresa)
+    public function create_vendedor()
     {
       
         
@@ -32,12 +36,12 @@ class VendedorController extends Controller
     public function store_vendedor(StoreUpdateVendedorFormRequest $request)
     {
             
-       // dd($request->all());
+       dd($request->all());
 
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
 
-        $this->model->create($data);
+        $this->vendedor->create($data);
 
         return redirect()->route('home.index');
     }

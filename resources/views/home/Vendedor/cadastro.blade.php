@@ -6,7 +6,7 @@
 
 
 
-@include('includes.validations-form')
+
 
 
     <form action="{{ route('home.store-vendedor') }}" method="post">

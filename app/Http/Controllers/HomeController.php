@@ -45,13 +45,14 @@ class HomeController extends Controller
     }
     public function create()
     {
+        
         //dd('create');
         return view('home.empresa.cadastroEmpresa');
     }
     public function store(StoreUpdateEmpresasFormRequest $request)
     {
             
-        //dd($request->all());
+        // dd($request->all());
 
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
