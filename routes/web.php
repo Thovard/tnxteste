@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\VendedorController;
 use Illuminate\Support\Facades\Route;
 
 //empresa
@@ -16,8 +17,10 @@ Route::delete('users/{id}', [EmpresaController::class, 'delete'])->name('emrpesa
 
 //vendedor
 
+route::get('/home/{name}/VendedorHome', [VendedorController::class, 'index'])->name('vendedor.index');
 
-
+route::get('/home/{name}/VendedorCadastro', [VendedorController::class, 'create_vendedor'])->name('vendedor.cadastro');
+    route::put('/home', [VendedorController::class, 'store_vendedor'])->name('home.store-vendedor');
 
 
 

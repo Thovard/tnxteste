@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Empresas;
 use Illuminate\Http\Request;
-
 class EmpresaController extends Controller
 {
 
@@ -13,6 +12,8 @@ class EmpresaController extends Controller
     public function __construct(Empresas $empresa)
     {
         $this->model = $empresa;
+
+    
     }
     
     public function edit($id)
@@ -44,7 +45,7 @@ class EmpresaController extends Controller
     public function delete($id)
     {
 
-    if (!$empresa = $this->model->find($id))
+    if (!$empresa = $this02->model->find($id))
         return redirect()->route('home.index');
 
         $empresa->delete();
@@ -54,4 +55,6 @@ class EmpresaController extends Controller
 
         
     }
+
+
 }
