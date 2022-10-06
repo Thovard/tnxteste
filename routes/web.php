@@ -5,9 +5,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VendedorController;
 use Illuminate\Support\Facades\Route;
 
-//empresa
+//home
 route::get('/home', [HomeController::class, 'index'])->name('home.index');                                           //<-- home home
 
+//empresa
 Route::get('/empresas/{id}', [EmpresaController::class, 'show'])->name('empresa.show');
 route::get('/empresas', [EmpresaController::class, 'create_empresa'])->name('empresa.cadastroEmpresa');
 route::post('/empresas', [EmpresaController::class, 'store'])->name('empresa.store');
@@ -16,10 +17,10 @@ route::get('/home/{id}/EditEmpresa',[EmpresaController::class, 'edit'])->name('e
 Route::delete('/empresas/{id}', [EmpresaController::class, 'delete'])->name('empresa.delete');
 
 //vendedor
+route::get('/VendedorHome/{id}', [VendedorController::class, 'index'])->name('vendedor.index');
 route::get('/empresas/{id}/vendedores', [VendedorController::class, 'create_vendedor'])->name('vendedor.cadastro');
 route::post('/empresas/{id}/vendedores', [VendedorController::class, 'store_vendedor'])->name('vendedor.store-vendedor');
 
-route::get('/home/{name}/VendedorHome', [VendedorController::class, 'index'])->name('vendedor.index');
 
 
 

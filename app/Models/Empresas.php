@@ -15,4 +15,10 @@ class Empresas extends Model
         'Telefone',
         'password'
     ];
+
+    public function vendedor()
+    {
+        return $this->hasMany(Vendedor::class);
+
+    }
 }

@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateEmpresasFormRequest;
-use App\Models\Empresas;
+use App\Models\{
+    Empresas,
+    Vendedor
+};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 class EmpresaController extends Controller
 {
 
-    protected $model;
+    protected $empresa;
+    protected $vendedor;
 
-    public function __construct(Empresas $empresa)
+    public function __construct(Vendedor $vendedor, Empresas $empresa)
     {
-        $this->model = $empresa;
+        $this->vendedor = $vendedor;
+        $this->empresa = $empresa;
+
     }
     
     // GET - Central de empresas
@@ -24,10 +32,20 @@ class EmpresaController extends Controller
     // GET - Detalhamento da empresa
     public function show($id)
     {
-        if (!$empresa = $this->model->find($id))
+        
+        if (!$empresa = $this->empresa->find($id))
             return redirect()->route('home.index');
 
-        return view('empresas.EmpresaHome', compact('empresa'));
+
+            //$vendedor = DB::table('vendedores')->get();
+
+        $vendedor = $empresa->vendedor()->get();
+
+       
+
+        
+           
+        return view('empresas.EmpresaHome', compact('empresa', 'vendedor'));
     }
 
     // POST - create empresa
@@ -36,14 +54,14 @@ class EmpresaController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
 
-        $this->model->create($data);
+        $this->empresa->create($data);
 
         return redirect()->route('home.index');
     }
     
     public function edit($id)
     {
-        if (!$empresa = $this->model->find($id))
+        if (!$empresa = $this->empresa->find($id))
             return redirect()->route('home.index');
             
         return view('empresas.edit', compact('empresa'));
@@ -52,7 +70,7 @@ class EmpresaController extends Controller
     public function update(Request $request, $id,Empresas $empresa)
     {
 
-    if (!$empresa = $this->model->find($id))
+    if (!$empresa = $this->empresa->find($id))
         return redirect()->route('home.index');
 
         $data = $request->only('name','CNPJ','Telefone');
@@ -61,17 +79,18 @@ class EmpresaController extends Controller
 
         $empresa->update($data);
 
-        return redirect()->route('empresa.show', $empresa->id);
+        return redirect()->route('empresa.show', $empresa->id)->with('success','Empresa atualizada com sucesso');
         
     }
 
     public function delete($id)
     {
         //dd('Passou por aqui');
-        if (!$empresa = $this->model->find($id))
+        if (!$empresa = $this->empresa->find($id))
             return redirect()->route('home.index');
 
         $empresa->delete();
         return redirect()->route('home.index');
     }
+
 }

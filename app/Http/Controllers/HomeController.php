@@ -18,16 +18,12 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
+   
         $empresa = 
         $this->model->where('name', 'LIKE', "%{$request->search}%")
         ->get();
-
         
         return view('home.index', compact('empresa'));
     }
-    
-    public function create()
-    {
-        return view('home.empresa.cadastroEmpresa');
-    }
+
 }

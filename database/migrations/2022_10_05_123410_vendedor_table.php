@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('vendedores', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('empresa_id');
-            $table->foreign('empresa_id')->references('id')->on('empresas');
+            $table->foreignId('empresas_id')->constrained('empresas');
             $table->string('name');
             $table->string('CPF')->unique();
             $table->string('Telefone');
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('vendedores');
     }
 };

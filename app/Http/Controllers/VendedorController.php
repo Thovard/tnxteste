@@ -21,28 +21,45 @@ class VendedorController extends Controller
         $this->vendedor = $vendedor;
         $this->empresa = $empresa;
 
-    
+    }
+public function index($empresaId)
+    {
+
+
+      if (!$vendedor = $this->vendedor->find($empresaId))   {
+          return redirect()->back();
+      }
+
+
+      $vendedor = $vendedor->empresa;
+   
+       //dd($vendedor->name);
+        return view('vendedores.index', compact('vendedor', 'teste'));
     }
 
-    public function create_vendedor(Empresas $empresa, $id)
+    public function create_vendedor($empresaId)
     {
-        if(!$empresa = $this->empresa->find($id)){
+
+        if (!$empresa = $this->empresa->find($empresaId))   {
             return redirect()->back();
         }
-        
+
         return view('vendedores.cadastro', compact('empresa'));
     }
 
-    public function store_vendedor(Empresas $empresa, StoreUpdateVendedorFormRequest $request)
+    public function store_vendedor( StoreUpdateVendedorFormRequest $request ,$empresaId)
     {
+        
+        if (!$empresa = $this->empresa->find($empresaId))   {
+            return redirect()->back();
+        }
         $data = $request->all();
-
         $data['password'] = bcrypt($request->password);
-
-       // $data['empresa_id'] = $empresaid;
+        $data['empresas_id'] = $empresaId;
 
         $this->vendedor->create($data);
 
-        return redirect()->route('home.index'); // redirect to -> empresas/empresaid
+
+        return redirect()->route('empresa.show', $empresa->id);
     }
 }
