@@ -22,19 +22,12 @@ class VendedorController extends Controller
         $this->empresa = $empresa;
 
     }
-public function index($empresaId)
+public function index($id, Empresas $empresa)
     {
+        if (!$vendedor = $this->vendedor->find($id))
+        return redirect()->route('empresa.index', $empresa->id);
 
-
-      if (!$vendedor = $this->vendedor->find($empresaId))   {
-          return redirect()->back();
-      }
-
-
-      $vendedor = $vendedor->empresa;
-   
-       //dd($vendedor->name);
-        return view('vendedores.index', compact('vendedor', 'teste'));
+        return view('vendedores.index', compact('vendedor'));
     }
 
     public function create_vendedor($empresaId)
