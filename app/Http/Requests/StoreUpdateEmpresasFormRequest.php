@@ -33,13 +33,13 @@ class StoreUpdateEmpresasFormRequest extends FormRequest
             'CNPJ' => [
                 'required',
                 'string',
-                'max:18',
+                'max:20',
                 'min:13',
             ],
             'Telefone' => [
                 'nullable',
                 'string',
-                'max:12',
+                'max:15',
                 'min:8',
             ],
             'password' => [

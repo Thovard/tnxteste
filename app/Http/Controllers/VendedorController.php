@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 class VendedorController extends Controller
 {
 
-    protected $model;
+    protected $empresa;
+    protected $vendedor;
 
     public function __construct(Vendedor $vendedor, Empresas $empresa)
     {
@@ -22,27 +23,26 @@ class VendedorController extends Controller
 
     
     }
-    public  function index()
-    {
-        dd('teste');
-    }
 
-    public function create_vendedor()
+    public function create_vendedor(Empresas $empresa, $id)
     {
-      
+        if(!$empresa = $this->empresa->find($id)){
+            return redirect()->back();
+        }
         
-        return view('home.Vendedor.cadastro');
+        return view('vendedores.cadastro', compact('empresa'));
     }
-    public function store_vendedor(StoreUpdateVendedorFormRequest $request)
-    {
-            
-       dd($request->all());
 
+    public function store_vendedor(Empresas $empresa, StoreUpdateVendedorFormRequest $request)
+    {
         $data = $request->all();
+
         $data['password'] = bcrypt($request->password);
+
+       // $data['empresa_id'] = $empresaid;
 
         $this->vendedor->create($data);
 
-        return redirect()->route('home.index');
+        return redirect()->route('home.index'); // redirect to -> empresas/empresaid
     }
 }
