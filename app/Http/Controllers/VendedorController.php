@@ -9,6 +9,7 @@ use App\Models\{
 };
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VendedorController extends Controller
 {
@@ -22,12 +23,24 @@ class VendedorController extends Controller
         $this->empresa = $empresa;
 
     }
-public function index($id, Empresas $empresa)
+public function index($id, Empresas $empresa,Vendedor $vendedor)
     {
+
+        $idempres = DB::table('vendedores')->where('id', '=', $id)->get('empresas_id');
+
+        $idempresa = $idempres[0]->empresas_id;
+
+        
+        $empresa = DB::table('empresas')->where('id', '=', $idempresa )->get('name');
+
+        $name = $empresa[0]->name;
+        
+        
+
         if (!$vendedor = $this->vendedor->find($id))
         return redirect()->route('empresa.index', $empresa->id);
 
-        return view('vendedores.index', compact('vendedor'));
+        return view('vendedores.index', compact('vendedor', 'empresa', 'name'));
     }
 
     public function create_vendedor($empresaId)
@@ -55,4 +68,41 @@ public function index($id, Empresas $empresa)
 
         return redirect()->route('empresa.show', $empresa->id);
     }
+    public function delete_vendedor($id)
+    {
+        //dd('Passou por aqui');
+        if (!$vendedor = $this->vendedor->find($id))
+            return redirect()->route('home.index');
+
+        $vendedor->delete();
+        return redirect()->route('home.index');
+    }
+    public function edit_vendedor($id)
+    {
+
+        //dd('ta indo');
+        
+        if (!$vendedor = $this->vendedor->find($id))
+           return redirect()->route('home.index');
+            
+        return view('vendedores.edit', compact('vendedor'));
+    }
+
+    public function update_vendedor(Request $request, $id,Vendedor $vendedor, Empresas $empresa)
+    {
+        
+        if (!$vendedor = $this->vendedor->find($id))
+        return redirect()->route('home.index');
+        
+        $data = $request->only('name','CPF','Telefone');
+        if ($request->password)
+        $data['password'] = bcrypt($request->password);
+        
+        $vendedor->update($data);
+        
+
+      return redirect()->route('vendedor.index', $vendedor->id);
+        
+    }
+
 }

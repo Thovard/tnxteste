@@ -41,7 +41,6 @@ class EmpresaController extends Controller
 
         $vendedor = $empresa->vendedor()->get();
 
-       
 
         
            
@@ -90,7 +89,7 @@ class EmpresaController extends Controller
             return redirect()->route('home.index');
 
         $empresa->delete();
-        return redirect()->route('home.index');
+        return redirect()->route('empresa.show', $empresa->id);
     }
 
 }

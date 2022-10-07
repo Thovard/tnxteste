@@ -26,4 +26,9 @@ class HomeController extends Controller
         return view('home.index', compact('empresa'));
     }
 
+    public function teste()
+    {
+        
+        return view('home.teste', );
+    }
 }

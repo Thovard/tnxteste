@@ -20,8 +20,12 @@ Route::delete('/empresas/{id}', [EmpresaController::class, 'delete'])->name('emp
 route::get('/VendedorHome/{id}', [VendedorController::class, 'index'])->name('vendedor.index');
 route::get('/empresas/{id}/vendedores', [VendedorController::class, 'create_vendedor'])->name('vendedor.cadastro');
 route::post('/empresas/{id}/vendedores', [VendedorController::class, 'store_vendedor'])->name('vendedor.store-vendedor');
+Route::delete('/vendedor/{id}', [VendedorController::class, 'delete_vendedor'])->name('vendedor.delete');
+route::get('/vendedor/{id}/edit',[VendedorController::class, 'edit_vendedor'])->name('vendedor.edit');
+    route::put('/vendedor/{id}', [VendedorController::class, 'update_vendedor'])->name('vendedor.update');
 
 
+route::get('/teste', [HomeController::class, 'teste'])->name('home.teste');
 
 
 Route::get('/', function () {
