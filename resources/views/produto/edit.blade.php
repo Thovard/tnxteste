@@ -6,6 +6,7 @@
 class="text-center text-3xl font-semibold leading-tigh py-2 text-decoration: underline">
     Editando a Empresa: 
     {{ $produtos->name }}
+    <a href="{{ route('produto.index', $produtos->id)}}" class=" absolute top-2 left-1 h-auto w-auto text-sm text-reigth bg-green-200 hover:bg-green-500 rounded-full py-2 px-8">Voltar</a>
 
 </h1>
 
