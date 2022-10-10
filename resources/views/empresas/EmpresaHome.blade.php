@@ -15,35 +15,36 @@
     </a>
 
     <br><br>
-    <div class="flez-col-2 flex gap-6">
-        <div class="col-span-2 flex-initial">
+    <div class="
+    colunas: flez-col-2 ">
+        <div class="order-1">
             <table class="flex-auto">
                 <tr>
                     <th
                         class="
-                                px-2 py-3 border-4 border-gray-300 
+                                px-7 py-3 border-4 border-gray-300 
                                 bg-gray-200 
                                 text-left text-xs font-semibold text-gray-700 
                                 uppercase tracking-wider">
                         Nome Funcionario
                     </th>
                     <th
-                        class="px-2 py-1 border-4 border-gray-300 
+                        class="px-5 py-1 border-4 border-gray-300 
                                 bg-gray-200 
                                 text-left text-xs font-semibold text-gray-700 
                                 uppercase tracking-wider">
                         CPF
                     </th>
                     <th
-                        class="px-2 py-3 border-4 border-gray-300 
+                        class="px-7 py-3 border-4 border-gray-300 
                                 bg-gray-100 
                                 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
                         <a href="/empresas/{{ $empresa->id }}/vendedores"
-                            class="bg-green-200 hover:bg-green-500 rounded-full text-center py-2 px-7 ">Criar novo
-                            Vendedor</a>
+                            class="bg-green-200 hover:bg-green-500 rounded-full text-center py-2 px-7 ">
+                            Criar novo Vendedor</a>
                     </th>
                     <th
-                        class="px-5 py-3 border-4 border-gray-300 
+                        class="px-7 py-3 border-4 border-gray-300 
                                 bg-gray-200 
                                 text-left text-xs font-semibold text-gray-700 
                                 uppercase tracking-wider">
@@ -52,18 +53,18 @@
                 </tr>
                 @foreach ($vendedor as $vendedor)
                     <tr>
-                        <td class="px-20 py-5 border-2 border-gray-200 bg-white text-sm">
+                        <td class="px-4 py-5 border-2 border-gray-200 bg-white text-center text-sm">
                             {{ $vendedor->name }}
                         </td>
-                        <td class="px-20 py-5 border-2 border-gray-200 bg-white text-sm">
+                        <td class="px-4 py-5 border-2 border-gray-200 bg-white text-center text-sm">
                             {{ $vendedor->CPF }}
                         </td>
-                        <td class="px-20 py-5 border-2 border-gray-200 bg-white text-sm">
-                            <a href="{{ route('vendedor.index', $vendedor->id) }}">
+                        <td class="px-6 py-5 border-2 border-gray-200 bg-white text-center text-sm">
+                            <a href="{{ route('vendedor.index', $vendedor->id) }}" class="bg-blue-200 hover:bg-blue-600 rounded-full text-center py-3 px-10">
                                 Acessar paginas
                             </a>
                         </td>
-                        <td class="px-20 py-5 border-2 border-gray-200 bg-white text-sm">
+                        <td class="px-6 py-5 border-2 border-gray-200 bg-white text-sm">
                             <form action="{{ route('vendedor.delete', $vendedor->id) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
@@ -78,9 +79,9 @@
             </table>
 
         </div>
-        <div class="flex-initial">
+        <div class="order-2">
             <table class="
-            absolute top-12 right-0 h-16 w-16
+            absolute top-12 right-5 h-16 w-16
             flex-auto
             
             ">
@@ -100,14 +101,70 @@
                     </th>
                 </tr>
                 <tr>
-                    <td class="px-20 py-5 border-2 border-gray-200 bg-white text-sm">
+                    <td class="px-6 py-5 border-2 border-gray-200 bg-white text-sm">
                         {{ $empresa->CNPJ }}
                     </td>
-                    <td class="px-20 py-5 border-2 border-gray-200 bg-white text-sm">
+                    <td class="px-6 py-5 border-2 border-gray-200 bg-white text-sm">
                         {{ $empresa->Telefone }}
                     </td>
                 </tr>
             </table>
         </div>
+        <div class="order-3">
+            <br>
+            <table>
+                <tr>
+                    <th
+                    class="
+                                px-8 py-3 border-4 border-gray-300 
+                                bg-gray-200 
+                                text-left text-xs font-semibold text-gray-700 
+                                uppercase tracking-wider">
+                        Produtos
+                    </th>
+                    <th
+                    class="
+                                px-8 py-3 border-4 border-gray-300 
+                                bg-gray-200 
+                                text-left text-xs font-semibold text-gray-700 
+                                uppercase tracking-wider">
+                        Categoria
+                    </th>
+                    <th
+                    class="px-8 py-3 border-4 border-gray-300 
+                    bg-gray-100 
+                    text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                        <a href="{{ route('produto.create',  $empresa->id)}}" class="bg-green-200 hover:bg-green-500 rounded-full text-center py-2 px-7 ">Criar Novo produtos</a>
+                    </th>
+                    <th
+                    class="px-8 py-3 border-4 border-gray-300 
+                            bg-gray-200 
+                            text-left text-xs font-semibold text-gray-700 
+                            uppercase tracking-wider">
+                    Apagar Usuario
+                </th>
+                </tr>
+                @foreach ($produtos as $produtos)
+                <tr>    
+                        
+                    <td class="px-10 py-5 border-2 border-gray-200 bg-white text-sm"> {{$produtos->name}}</td>
+                    <td class="px-10 py-5 border-2 border-gray-200 bg-white text-sm">{{$produtos->Categoria}}</td>
+                    <td class="px-10 py-5 border-2 border-gray-200 bg-white text-sm">
+                        <a href="#"class="bg-blue-200 hover:bg-blue-600 rounded-full text-center py-3 px-10">Acessar Pagina</a>
+                    </td>
+                    <td class="px-10 py-5 border-2 border-gray-200 bg-white text-sm">
+                        <form action="#" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit"
+                                class="shadow bg-purple-500 hover:bg-purple-400 text-sm focus:shadow-outline focus:outline-none text-white font-bold py-2 px-2 rounded ">
+                                Deletar Empresa
+                            </button>
+                        </form>
+                </tr>
+                @endforeach
+            </table>
+        </div>
     </div>
+
 @endsection

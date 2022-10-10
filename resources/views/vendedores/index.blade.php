@@ -9,6 +9,7 @@
             ">
                 Dados do vendedor
             </h1>
+            <a href="{{ route('empresa.show', $empresaid)}}">Voltar</a>
         </div>
     </div>
     <div>

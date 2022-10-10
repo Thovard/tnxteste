@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\VendedorController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,10 @@ route::post('/empresas/{id}/vendedores', [VendedorController::class, 'store_vend
 Route::delete('/vendedor/{id}', [VendedorController::class, 'delete_vendedor'])->name('vendedor.delete');
 route::get('/vendedor/{id}/edit',[VendedorController::class, 'edit_vendedor'])->name('vendedor.edit');
     route::put('/vendedor/{id}', [VendedorController::class, 'update_vendedor'])->name('vendedor.update');
+
+//produtos
+route::get('/empresas/{id}/produtos', [ProdutosController::class, 'ceate_produto'])->name('produto.create');
+route::post('/empresas/{id}/produtos', [ProdutosController::class, 'store_produto'])->name('produtos.store-produtos');
 
 
 route::get('/teste', [HomeController::class, 'teste'])->name('home.teste');

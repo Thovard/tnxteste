@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUpdateEmpresasFormRequest;
 use App\Models\{
     Empresas,
-    Vendedor
+    Vendedor,
+    Produtos
 };
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,13 +16,14 @@ class EmpresaController extends Controller
 
     protected $empresa;
     protected $vendedor;
+    protected $produtos;
 
-    public function __construct(Vendedor $vendedor, Empresas $empresa)
+    public function __construct(Vendedor $vendedor, Empresas $empresa, Produtos $produtos)
     {
         $this->vendedor = $vendedor;
         $this->empresa = $empresa;
-
-    }
+        $this->Produtos = $produtos;
+      }
     
     // GET - Central de empresas
     public function create_empresa()
@@ -40,11 +42,12 @@ class EmpresaController extends Controller
             //$vendedor = DB::table('vendedores')->get();
 
         $vendedor = $empresa->vendedor()->get();
+        $produtos = $empresa->produtos()->get();
 
 
         
            
-        return view('empresas.EmpresaHome', compact('empresa', 'vendedor'));
+        return view('empresas.EmpresaHome', compact('empresa', 'vendedor', 'produtos'));
     }
 
     // POST - create empresa

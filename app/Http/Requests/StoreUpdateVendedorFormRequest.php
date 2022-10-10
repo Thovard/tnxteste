@@ -39,7 +39,7 @@ class StoreUpdateVendedorFormRequest extends FormRequest
            'Telefone' => [
                'nullable',
                'string',
-               'max:12',
+               'max:14',
                'min:8',
            ],
            'password' => [

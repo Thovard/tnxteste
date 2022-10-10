@@ -29,18 +29,19 @@ public function index($id, Empresas $empresa,Vendedor $vendedor)
         $idempres = DB::table('vendedores')->where('id', '=', $id)->get('empresas_id');
 
         $idempresa = $idempres[0]->empresas_id;
-
+    
         
-        $empresa = DB::table('empresas')->where('id', '=', $idempresa )->get('name');
-
+        $empresa = DB::table('empresas')->where('id', '=', $idempresa )->get();
+        
         $name = $empresa[0]->name;
-        
-        
+        $empresaid = $empresa[0]->id;
+
+       // dd($id);
 
         if (!$vendedor = $this->vendedor->find($id))
         return redirect()->route('empresa.index', $empresa->id);
 
-        return view('vendedores.index', compact('vendedor', 'empresa', 'name'));
+        return view('vendedores.index', compact('vendedor', 'empresa', 'name','id', 'empresaid'));
     }
 
     public function create_vendedor($empresaId)
