@@ -14,6 +14,7 @@ class Produtos extends Model
         'name',
         'empresas_id',
         'Categoria',
+        'image',
     ];
 
     public function produtos()

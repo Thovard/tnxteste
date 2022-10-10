@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('empresas_id')->constrained('empresas');
             $table->string('name');
             $table->string('Categoria');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -8,6 +8,8 @@ use App\Models\Empresas;
 use App\Models\Produtos;
 use App\Models\Vendedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProdutosController extends Controller
 {
@@ -46,11 +48,74 @@ class ProdutosController extends Controller
 
        $data['empresas_id'] = $empresaId;
      
-      // dd($data);
+      if ($request->image) {
+        $data['image'] = $request->image->store('produtos');
+
+        
+      }
+     
        
        $this->produtos->create($data);
 
 
        return redirect()->route('empresa.show', $empresa->id);
     }
+    public function index($id, Empresas $empresa)     {
+        $empresa = DB::table('Produtos')->where('id', '=', $id)->get('empresas_id');
+        $empresa = $empresa[0]->empresas_id;
+        $empresa = DB::table('empresas')->where('id', '=', $empresa)->get();
+        $empresa = $empresa[0];
+
+        if (!$produtos = $this->produtos->find($id))
+        return redirect()->route('empresa.index', $empresa->id);
+       
+        return view('produto.index', compact('empresa', 'id', 'produtos'));
+    }
+
+    public function edit_produto($id)
+    {
+        
+        if (!$produtos = $this->produtos->find($id))
+           return redirect()->route('home.index');
+            
+        return view('produto.edit', compact('produtos'));
+    }
+
+    public function update_produto(Request $request, $id, Empresas $empresa, Produtos $produtos)
+    {
+
+        if (!$produtos = $this->produtos->find($id))
+        return redirect()->route('home.index');
+        
+        $data = $request->only('name','Categoria');
+        if ($request->image) {
+            if( $produtos->image && Storage::exists($produtos->image)) {
+                Storage::delete($produtos->image);
+            $data['image'] = $request->image->store('produtos');
+          }
+        }
+        $produtos->update($data);
+        
+
+      return redirect()->route('produto.index', $produtos->id);
+        
+    }
+    public function delete_produto($id)
+    {
+        $empresa = DB::table('Produtos')->where('id', '=', $id)->get('empresas_id');
+        $empresa = $empresa[0]->empresas_id;
+        $empresa = DB::table('empresas')->where('id', '=', $empresa)->get();
+        $empresa = $empresa[0];
+       
+       
+
+        if (!$produtos = $this->produtos->find($id))
+            return redirect()->route('home.index');
+            Storage::delete($produtos->image);
+        $produtos->delete();
+
+
+        return redirect()->route('empresa.show', $empresa->id);
+    }
+
 }

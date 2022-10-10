@@ -16,7 +16,8 @@ class Vendedor extends Model
         'empresas_id',
         'CPF',
         'Telefone',
-        'password'
+        'password',
+        'image',
     ];
     public function empresa()
     {

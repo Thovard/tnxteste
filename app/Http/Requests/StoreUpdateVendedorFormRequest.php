@@ -23,6 +23,8 @@ class StoreUpdateVendedorFormRequest extends FormRequest
      */
     public function rules()
     {
+        
+
         return [
            'name' => [
                'required',
@@ -45,7 +47,12 @@ class StoreUpdateVendedorFormRequest extends FormRequest
            'password' => [
                'required',
                'max:25',
-           ]
+           ],
+           'image' =>[
+            'nullable',
+            'image',
+            'max:1024',
+        ]
         ];
     }
 }

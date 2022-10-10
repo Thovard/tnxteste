@@ -9,13 +9,13 @@
             ">
                 Dados do vendedor
             </h1>
-            <a href="{{ route('empresa.show', $empresaid)}}" class=" absolute top-2 left-1 h-auto w-auto text-sm text-reigth bg-green-200 hover:bg-green-500 rounded-full py-2 px-8">Voltar</a>
+            <a href="{{ route('empresa.show', $empresa->id)}}" class=" absolute top-2 left-1 h-auto w-auto text-sm text-reigth bg-green-200 hover:bg-green-500 rounded-full py-2 px-8">Voltar</a>
         </div>
     </div>
 
 <br>    
     <div>
-        <a href="{{route('vendedor.edit', $vendedor->id)}}"
+        <a href="{{ route('produto.edit', $produtos->id) }}"
             class="
          absolute left-1 top-19 h-auto w-auto 
          text-base text-center
@@ -44,7 +44,7 @@
                     Nome:
                 </th>
                 <td class="px-20 py-5 border-2 border-gray-200 bg-white text-sm">
-                    {{ $vendedor->name }}
+                    {{ $produtos->name }}
                 </td>
             </tr>
             <tr>
@@ -52,22 +52,15 @@
                     CPF:
                 </th>
                 <td class="px-20 py-5 border-2 border-gray-200 bg-white text-sm">
-                    {{ $vendedor->CPF }}
+                    {{ $produtos->Categoria }}
                 </td>
             </tr>
-            <tr>
-                <th class="px-5 py-3 border-4 border-gray-300 ">
-                    Telefone:
-                </th>
-                <td class="px-20 py-5 border-2 border-gray-200 bg-white text-sm">
-                    {{ $vendedor->Telefone }}
-                </td>
                 <tr>
                     <th class="px-5 py-3 border-4 border-gray-300 ">
                         Empresa:
                     </th>
                     <td class="px-20 py-5 border-2 border-gray-200 bg-white text-sm">    
-                        {{$name}}
+                        {{$empresa->name}}
                     </td>
                 </tr>
             </tr>

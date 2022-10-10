@@ -5,7 +5,7 @@
 <h1 
 class="text-center text-3xl font-semibold leading-tigh py-2 text-decoration: underline">
     Editando a Empresa: 
-    {{ $vendedor->name }}
+    {{ $produtos->name }}
 
 </h1>
 
@@ -18,10 +18,10 @@ class="text-center text-3xl font-semibold leading-tigh py-2 text-decoration: und
     </ul>
 
     @endif
-<div class="w-full bg-white shadow-md rounded px-8 py-12"> 
-    <form action="{{ route('vendedor.update', $vendedor->id) }}" method="post" enctype="multipart/form-data">
+<div class="w-full bg-white shadow-md rounded px-8 py-12">
+    <form action="{{ route('produto.update', $produtos->id) }}" method="post" enctype="multipart/form-data">
             <input type="hidden" name="_method" value="PUT">
-            @include('_partials.Vendedor_form')
+            @include('_partials.Produtos_form')
     </form>
     </div>
 

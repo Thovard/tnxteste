@@ -36,6 +36,12 @@ class StoreUpdateProdutosFormRequest extends FormRequest
                 'max:20',
                 'min:2',
             ],
+            'image' =>[
+                'required',
+                'image',
+                'max:1024',
+            ]
+            
         ];
     }
 }

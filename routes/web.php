@@ -28,6 +28,10 @@ route::get('/vendedor/{id}/edit',[VendedorController::class, 'edit_vendedor'])->
 //produtos
 route::get('/empresas/{id}/produtos', [ProdutosController::class, 'ceate_produto'])->name('produto.create');
 route::post('/empresas/{id}/produtos', [ProdutosController::class, 'store_produto'])->name('produtos.store-produtos');
+route::get('/ProdutoHome/{id}', [ProdutosController::class, 'index'])->name('produto.index');
+route::get('/produto/{id}/edit',[ProdutosController::class, 'edit_produto'])->name('produto.edit');
+    route::put('/produto/{id}', [ProdutosController::class, 'update_produto'])->name('produto.update');
+Route::delete('/produto/{id}', [ProdutosController::class, 'delete_produto'])->name('produto.delete');
 
 
 route::get('/teste', [HomeController::class, 'teste'])->name('home.teste');

@@ -54,6 +54,12 @@
                 @foreach ($vendedor as $vendedor)
                     <tr>
                         <td class="px-4 py-5 border-2 border-gray-200 bg-white text-center text-sm">
+                            @if ($vendedor->image)
+                                <img src="{{ url("storage/{$vendedor->image}") }}" alt="{{ $vendedor->name }}" class="object-cover w-20">
+          
+                            @else
+                                <img src="{{ url("imagens/2318271-icone-do-perfil-do-usuario-grátis-vetor.jpg")}}" alt="{{ $vendedor->name }} " class="object-cover w-20">
+                            @endif
                             {{ $vendedor->name }}
                         </td>
                         <td class="px-4 py-5 border-2 border-gray-200 bg-white text-center text-sm">
@@ -147,13 +153,20 @@
                 @foreach ($produtos as $produtos)
                 <tr>    
                         
-                    <td class="px-10 py-5 border-2 border-gray-200 bg-white text-sm"> {{$produtos->name}}</td>
+                    <td class="px-10 py-5 border-2 border-gray-200 bg-white text-sm"> 
+                        @if ($vendedor->image)
+                        <img src="{{ url("storage/{$produtos->image}") }}" alt="{{ $produtos->name }}" class="object-cover w-20">
+  
+                    @else
+                        <img src="{{ url("imagens/2318271-icone-do-perfil-do-usuario-grátis-vetor.jpg")}}" alt="{{ $vendedor->name }} " class="object-cover w-20">
+                    @endif
+                    {{$produtos->name}}</td>
                     <td class="px-10 py-5 border-2 border-gray-200 bg-white text-sm">{{$produtos->Categoria}}</td>
                     <td class="px-10 py-5 border-2 border-gray-200 bg-white text-sm">
-                        <a href="#"class="bg-blue-200 hover:bg-blue-600 rounded-full text-center py-3 px-10">Acessar Pagina</a>
+                        <a href="{{ route('produto.index', $produtos->id) }}"class="bg-blue-200 hover:bg-blue-600 rounded-full text-center py-3 px-10">Acessar Pagina</a>
                     </td>
                     <td class="px-10 py-5 border-2 border-gray-200 bg-white text-sm">
-                        <form action="#" method="POST">
+                        <form action="{{ route('produto.delete', $produtos->id) }}" method="POST">
                             @method('DELETE')
                             @csrf
                             <button type="submit"

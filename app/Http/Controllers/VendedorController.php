@@ -10,6 +10,7 @@ use App\Models\{
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class VendedorController extends Controller
 {
@@ -25,14 +26,9 @@ class VendedorController extends Controller
     }
 public function index($id, Empresas $empresa,Vendedor $vendedor)
     {
-
         $idempres = DB::table('vendedores')->where('id', '=', $id)->get('empresas_id');
-
         $idempresa = $idempres[0]->empresas_id;
-    
-        
         $empresa = DB::table('empresas')->where('id', '=', $idempresa )->get();
-        
         $name = $empresa[0]->name;
         $empresaid = $empresa[0]->id;
 
@@ -56,6 +52,7 @@ public function index($id, Empresas $empresa,Vendedor $vendedor)
 
     public function store_vendedor( StoreUpdateVendedorFormRequest $request ,$empresaId)
     {
+
         
         if (!$empresa = $this->empresa->find($empresaId))   {
             return redirect()->back();
@@ -63,7 +60,9 @@ public function index($id, Empresas $empresa,Vendedor $vendedor)
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
         $data['empresas_id'] = $empresaId;
-
+        if ($request->image) {
+            $data['image'] = $request->image->store('vendedores');
+          }
         $this->vendedor->create($data);
 
 
@@ -71,12 +70,18 @@ public function index($id, Empresas $empresa,Vendedor $vendedor)
     }
     public function delete_vendedor($id)
     {
-        //dd('Passou por aqui');
+        $empresa = DB::table('vendedores')->where('id', '=', $id)->get('empresas_id');
+        $empresa = $empresa[0]->empresas_id;
+        $empresa = DB::table('empresas')->where('id', '=', $empresa )->get();
+        $empresa = $empresa[0];
+
+
+
         if (!$vendedor = $this->vendedor->find($id))
             return redirect()->route('home.index');
-
+            Storage::delete($vendedor->image);
         $vendedor->delete();
-        return redirect()->route('home.index');
+        return redirect()->route('empresa.show', $empresa->id);
     }
     public function edit_vendedor($id)
     {
@@ -98,7 +103,14 @@ public function index($id, Empresas $empresa,Vendedor $vendedor)
         $data = $request->only('name','CPF','Telefone');
         if ($request->password)
         $data['password'] = bcrypt($request->password);
-        
+
+        if ($request->image) {
+           if( $vendedor->image && Storage::exists($vendedor->image)) {
+                Storage::delete($vendedor->image);
+           }
+
+            $data['image'] = $request->image->store('vendedores');
+          }
         $vendedor->update($data);
         
 
