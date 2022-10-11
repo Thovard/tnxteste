@@ -7,6 +7,7 @@ use App\Http\Controllers\VendedorController;
 use Illuminate\Support\Facades\Route;
 
 //home
+Route::get('/', [HomeController::class, 'vendas'])->name('vendas.home');
 route::get('/home', [HomeController::class, 'index'])->name('home.index');                                           //<-- home home
 
 //empresa
@@ -37,6 +38,3 @@ Route::delete('/produto/{id}', [ProdutosController::class, 'delete_produto'])->n
 route::get('/teste', [HomeController::class, 'teste'])->name('home.teste');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});

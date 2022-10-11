@@ -53,10 +53,10 @@
                             {{ $empresas->name }}
                         </td>
                         <td class="px-5 py-5 border-2 border-gray-200 bg-white text-sm">
-
+                            {{$empresas->vendedor->count() }}
                         </td>
                         <td class="px-5 py-5 border-2 border-gray-200 bg-white text-sm">
-
+                            {{$empresas->produtos->count() }}
                         </td>
                         <td class="px-20 py-5 border-2 border-gray-200 bg-white text-sm">
                             <a href="{{ route('empresa.show', $empresas->id) }}"
