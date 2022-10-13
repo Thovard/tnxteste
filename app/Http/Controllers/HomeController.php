@@ -41,8 +41,10 @@ class HomeController extends Controller
         $empresa = 
         $this->empresa->get();
         //dd($empresa);
+
         $vendedor = 
         $this->vendedor->get();
+        
         $produtos = 
         $this->produtos->get();
 
