@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Empresas;
 use App\Models\Produtos;
 use App\Models\Vendedor;
+use App\Models\vendas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -48,11 +49,20 @@ class HomeController extends Controller
         $produtos = 
         $this->produtos->get();
 
-
+        
         
 
         return view('home.vendas', compact('empresa', 'vendedor', 'produtos'));
     }
+    public function store(Request $request)
+    {
+        //dd($request);
+        $data = $request->all();
+        
+        $this->vendas->create($data);
 
+        return redirect()->route('vendas.home');
+    }
+    
 
 }

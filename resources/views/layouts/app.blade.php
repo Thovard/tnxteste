@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="https://www.npmjs.com/package/jquery.maskedinput"></script>
 
+
 </head>
 <body>
 
@@ -18,12 +19,23 @@
         @yield('content')
     </div>
     <script>
-    function mudanca() {
-        var select = document.getElementById("empresa");
 
-        var opcaoValue = select.options[select.selectedIndex].value;
 
-        console.log("opcaoValue: " + opcaoValue);
+        
+        
+        
+
+
+
+
+    function mudanca(opcaoSelecionada) {
+        let idEmpresa = document.getElementById("empresa");
+
+        let opcaoValue = idEmpresa.options[idEmpresa.selectedIndex].value;
+
+        let filtrovendedor = vendedor.filter(v => v.value == opcaoValue);
+
+        console.log("tbEmpresa: " + tbEmpresa);
     }
     </script>
 
