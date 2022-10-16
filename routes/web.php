@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 //home
 Route::get('/', [HomeController::class, 'vendas'])->name('vendas.home');
-route::post('/', [HomeController::class, 'store'])->name('vendas.store');
+route::post('/cadastro', [HomeController::class, 'store'])->name('vendas.store');
 route::get('/home', [HomeController::class, 'index'])->name('home.index');                                           //<-- home home
 
 

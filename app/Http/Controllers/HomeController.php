@@ -54,14 +54,20 @@ class HomeController extends Controller
 
         return view('home.vendas', compact('empresa', 'vendedor', 'produtos'));
     }
-    public function store(Request $request)
+    public function store(Request $resquest)
     {
-        //dd($request);
-        $data = $request->all();
-        
-        $this->vendas->create($data);
+       $vendedor = ["dados" => Vendedor::where("empresas_id", $resquest->op)->get(),
+            "resposta" => true
+    ];
 
-        return redirect()->route('vendas.home');
+        return json_encode($vendedor);
+
+
+
+    //  $teste = [
+    //    "resposta" => true
+    //  ];
+    //  return json_encode($teste);
     }
     
 
