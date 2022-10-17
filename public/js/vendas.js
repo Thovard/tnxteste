@@ -30,6 +30,9 @@ function clerSelect() {
     vendedor.innerHTML = ""
 
 }
+
  function addVendedores() {
-    
+
+    var vendedor = document.get("dados")
+    $('#vendedores').append(`<option value='${id}'>${name}</option>`);
 }

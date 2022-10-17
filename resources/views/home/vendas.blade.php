@@ -10,9 +10,7 @@
 
 
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="https://www.npmjs.com/package/jquery.maskedinput"></script>
+
 
 
 
@@ -53,9 +51,7 @@
                 </select>
                 <select id="vendedor">
 
-                    @foreach ($vendedor as $vendedor )
-                    <option value="{{$vendedor->id}}" idEmpresa="{{$vendedor->empresa_id}}">{{$vendedor->name}}</option>
-                    @endforeach
+ 
 
                 </select>
                 <select id="produto"></select>
@@ -73,57 +69,8 @@
 
 
 
-    <script src="js/vendas.js"></script>
-
-    <script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //        var empresas = <?php echo json_encode($empresa); ?>;
-        //        var vendedores = <?php echo json_encode($vendedor); ?>;
-        //        var produtos = <?php echo json_encode($produtos); ?>;
-        //
-        //        renderizarSelect("empresa", empresas);
-        //
-        //        function renderizarSelect(idSelect, elementos) {
-        //            let select = document.getElementById(idSelect);
-        //
-        //            select.innerHTML = '';
-        //            elementos.forEach(elemento => {
-        //                select.innerHTML = select.innerHTML + `<option id="${elemento.id}">${elemento.name}</option>`;
-        //            });
-        //        }
-        //
-        //        function filtrarVendedoresProdutos(opcaoSelecionada) {
-        //            let idEmpresa = empresa[opcaoSelecionada.selectedIndex].id;
-        //
-        //            let vendedoresFiltrados = vendedores.filter(v => v.empresas_id == idEmpresa);
-        //            renderizarSelect('vendedor', vendedoresFiltrados);
-        //
-        //            let produtosFiltrados = produtos.filter(v => v.empresas_id == idEmpresa);
-        //            renderizarSelect('produto', produtosFiltrados);
-        //        }
-    </script>
-
-
+   
+<script src="js/vendas.js"></script>
 </body>
 
 </html>
