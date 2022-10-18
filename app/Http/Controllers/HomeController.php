@@ -61,7 +61,7 @@ class HomeController extends Controller
     ];
 
         return json_encode($vendedor);
-
+   
 
 
     //  $teste = [

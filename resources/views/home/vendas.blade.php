@@ -12,13 +12,17 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 
+div1 {
+    color
+}
+
 
 
 
 
 <body>
 
-    <div class="grid grid-cols-3 grid-rows-2 ">
+    <div class="grid grid-cols-3 grid-rows-2">
         <div class="
     order-2 
     text-center absolute top-2 right-9 left-2  h-auto w-auto ">
@@ -51,7 +55,7 @@
                 </select>
                 <select id="vendedor">
 
- 
+                    
 
                 </select>
                 <select id="produto"></select>

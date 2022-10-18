@@ -1,6 +1,7 @@
 let _token = document.querySelector("input#csrf");
 
-var select = null
+var select = null;
+
 
 function selectEmpresa( option ){
     fetch('/cadastro', {
@@ -14,10 +15,11 @@ function selectEmpresa( option ){
     }).then((data) => data.json()).then((data) => {
          if (data.resposta === true) {
             clerSelect()
-            console.log(data.dados)
+            console.log( data.dados)
          }
     })
 }
+
 
 function OnclickEmpresa() {
    select = document.getElementById("empresa").value;
@@ -26,13 +28,13 @@ function OnclickEmpresa() {
 }
 
 function clerSelect() {
-    var vendedor = document.getElementById("vendedor")
+    let vendedor = document.getElementById("vendedor")
     vendedor.innerHTML = ""
 
 }
 
- function addVendedores() {
+function addVendedor() {
 
-    var vendedor = document.get("dados")
-    $('#vendedores').append(`<option value='${id}'>${name}</option>`);
+
+
 }
