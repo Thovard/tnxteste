@@ -1,77 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('content')
+    <div>
+        <div class="w-full h-16 bg-cyan-600	grid grid-cols-3 divide-x-0">
+            <div
+            class="
+            
+            order-2
+            "> 
+                <h1 class=" 
+                titulo
+                absolute top-2
+                text-center
+                text-2xl
+                ">Central de Vendas</h1>
+            </div>
+            <div class="
+            text-center order-1
+            ">
+                <a href="#" class="absolute top-2 left-0
+                bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-20">Historico
+                    de Vendas</a>
+            </div>
 
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-
-div1 {
-    color
-}
-
-
-
-
-
-<body>
-
-    <div class="grid grid-cols-3 grid-rows-2">
-        <div class="
-    order-2 
-    text-center absolute top-2 right-9 left-2  h-auto w-auto ">
-            <h1 class="text-center text-3xl font-semibold leading-tigh py-2">Central de Vendas</h1>
+            <div class="
+            text-center order-3
+            
+            ">
+                <a href="{{ route('home.index') }}" class="
+                absolute top-2 right-0
+                bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-28 ">Acessar
+                    Empresa</a>
+            </div>
         </div>
-        <div class=" order-1">
-            <a href="#" class=" absolute top-3 left-3 h-auto w-auto text-base text-reigth bg-green-200 hover:bg-green-500 rounded-full py-1 px-8">Historico
-                de Vendas</a>
-        </div>
+        <div class="w-full h-20 relative inset-y-32 ">
+            <form>
+                <div>
+                    <input type="hidden" name="_token" id="csrf" value="{{ csrf_token() }}" />
 
-        <div class="order-3 text-right border-3 ">
-            <a href="{{ route('home.index') }}" class=" absolute top-3 right-3 h-auto w-auto text-base text-reigth bg-green-200 hover:bg-green-500 rounded-full py-1 px-8">Acessar
-                Empresa</a>
-        </div>
+                    <select id="empresa" onchange="OnclickEmpresa()" class="block p-2 mb-6 w-full text-center text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected disabled hidden>Selecionar uma Empresa</option>
+                        @foreach ($empresa as $empresa)
+                            <option value="{{ $empresa->id }}">{{ $empresa->name }}</option>
+                        @endforeach
+                    </select><br>
+                </div>
+                <div>
+                    <select id="vendedor" class="block p-2 mb-6 w-full text-center text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </select><br>
+                </div>
+                <div>
+                    <select id="produto" class="block p-2 mb-6 w-full text-center text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <div class=" order-4 col-span-3">
-        <form>
-            <input type="hidden" name="_token" id="csrf" value="{{ csrf_token() }}" />
+                    </select>
+                </div>
 
-
-
-
-                <select id="empresa" onchange="OnclickEmpresa()">
-                <option selected disabled hidden>Selecionar uma Empresa</option>
-                @foreach ($empresa as $empresa )
-
-                    <option value="{{$empresa->id}}">{{$empresa->name}}</option>
-
-                    @endforeach
-                </select>
-                <select id="vendedor"></select>
-                <select id="produto"></select>
-
-        
+                <div class="
+                relative inset-y-1">
 
 
-                <button type="button"> Comprar </button>
+                <button type="button" class="
+                
+                bg-blue-500 hover:bg-blue-700 
+                text-white font-bold py-2 px-24
+                 border border-blue-700 rounded"> Comprar </button>
 
             </form>
-
+        </div>
 
         </div>
     </div>
 
 
 
-   
-<script src="js/vendas.js"></script>
-</body>
 
-</html>
+    <script src="js/vendas.js"></script>
+@endsection

@@ -1,11 +1,14 @@
-.teste{
-    font-size: 50px;
+.tabela-empresas, .search-empresas, .tabela-cadastro  {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
-.teste02{
-    background-color: #f44336;
-    color: white;
-    padding: 14px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+
+.localização_botão_cadastro {
+    padding-top:0%;
+    padding-bottom: 5px;
+    padding-left: 60px;
+}
+.titulo {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

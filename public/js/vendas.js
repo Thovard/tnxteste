@@ -50,4 +50,7 @@ function clerSelect(name) {
 
 }
 
-
+function DisabledSelect(name) { 
+    name = document.querySelector('#'+ name)
+        name.disabled = true
+}
