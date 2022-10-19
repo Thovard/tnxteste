@@ -56,8 +56,10 @@ class HomeController extends Controller
     }
     public function store(Request $resquest)
     {
-       $vendedor = ["dados" => Vendedor::where("empresas_id", $resquest->op)->get(),
-            "resposta" => true
+       $vendedor = ["vendedor" => Vendedor::where("empresas_id", $resquest->op)->get(),
+                        "resposta" => true,
+                    "produtos"  => Produtos::where("empresas_id", $resquest->op)->get(), 
+                        
     ];
 
         return json_encode($vendedor);

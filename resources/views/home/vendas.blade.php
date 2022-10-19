@@ -40,30 +40,27 @@ div1 {
 
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <div class=" order-4 col-span-3">
-        <form action="/cadastro" method="post">
+        <form>
             <input type="hidden" name="_token" id="csrf" value="{{ csrf_token() }}" />
 
 
 
 
                 <select id="empresa" onchange="OnclickEmpresa()">
-                    @foreach ($empresa as $empresa )
+                <option selected disabled hidden>Selecionar uma Empresa</option>
+                @foreach ($empresa as $empresa )
 
                     <option value="{{$empresa->id}}">{{$empresa->name}}</option>
 
                     @endforeach
                 </select>
-                <select id="vendedor">
-
-                    
-
-                </select>
+                <select id="vendedor"></select>
                 <select id="produto"></select>
 
         
 
 
-                <button type="submit"> Comprar</button>
+                <button type="button"> Comprar </button>
 
             </form>
 

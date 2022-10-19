@@ -2,6 +2,10 @@ let _token = document.querySelector("input#csrf");
 
 var select = null;
 
+let vendedor = document.querySelector("select#vendedor")
+
+let produtos = document.querySelector("select#produto")
+    
 
 function selectEmpresa( option ){
     fetch('/cadastro', {
@@ -14,8 +18,21 @@ function selectEmpresa( option ){
         body: JSON.stringify({ op:option })
     }).then((data) => data.json()).then((data) => {
          if (data.resposta === true) {
-            clerSelect()
-            console.log( data.dados)
+            clerSelect('vendedor')
+
+            let vendedorName = data.vendedor;
+
+            vendedorName.forEach((vendedorName) => {
+                vendedor.innerHTML += "<option value=" + vendedorName.id +">" + vendedorName.name + "</option>"
+            })
+            clerSelect('produto')
+            let produtosName = data.produtos;
+
+            produtosName.forEach((produtosName) => {
+                produtos.innerHTML += "<option value="+ produtosName.id + ">" + produtosName.name + "</option>"
+            })
+
+            console.log(data)
          }
     })
 }
@@ -27,14 +44,10 @@ function OnclickEmpresa() {
     
 }
 
-function clerSelect() {
-    let vendedor = document.getElementById("vendedor")
-    vendedor.innerHTML = ""
+function clerSelect(name) {
+    name = document.querySelector('#'+ name)
+        name.innerHTML = ""
 
 }
 
-function addVendedor() {
 
-
-
-}
