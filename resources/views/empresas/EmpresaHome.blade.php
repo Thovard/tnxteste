@@ -50,17 +50,17 @@
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th class="py-3 px-6 text-center">
+                        <th class="py-3 px-12 text-center">
                             Nome Funcionario
                         </th>
-                        <th class="py-3 px-6 text-center">
+                        <th class="py-3 px-12 text-center">
                             CPF
                         </th>
-                        <th class="py-3 px-6 text-center">
-                            <a href="/empresas/{{ $empresa->id }}/vendedores" class=" bg-green-600 hover:bg-green-300 rounded-full text-center text-white py-2 px-7 ">
+                        <th class="py-3 px-2 break-inside-avoid-column text-center">
+                            <a href="/empresas/{{ $empresa->id }}/vendedores" class=" bg-green-600 hover:bg-green-300 rounded-full text-center text-white py-2 px-4 ">
                                 Criar novo Vendedor</a>
                         </th>
-                        <th class="py-3 px-6 text-center">
+                        <th class="py-3 px-12 text-center">
                             Apagar Usuario
                         </th>
                     </tr>

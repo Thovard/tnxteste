@@ -1,14 +1,13 @@
 .tabela-empresas, .search-empresas, .tabela-cadastro  {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
-
-.localização_botão_cadastro {
-    padding-top:0%;
-    padding-bottom: 5px;
-    padding-left: 60px;
+.endereço {
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
-.titulo {
-    padding-top: 20px;
-    padding-bottom: 20px;
+.button-edit-emp {
+    right: 40rem;
+    width: 38rem;
+    bottom: 280px;
 }
