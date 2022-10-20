@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class=" w-full h-10 bg-cyan-600 ">
+    <div class=" w-full h-14 bg-cyan-600 ">
         <h1 class="text-center
-        text-2xl">
+        text-3xl">
             central de empresas
         </h1>
             <a href="/empresas"
-               class=" absolute top-0.5 left-0.5 h-auto w-auto 
+               class=" absolute top-2 left-0.5 h-auto w-auto 
                bg-blue-500 hover:bg-blue-700 text-white text-lg font-bold py-1 px-6 ">
                 Cadastrar Nova Empresa
             </a>
 
-            <a href="/" class=" absolute top-0.5 right-0.5 h-auto w-auto 
+            <a href="/" class=" absolute top-2 right-0.5 h-auto w-auto 
             bg-green-500 hover:bg-green-700 text-white text-lg font-bold py-1 px-14 ">modulo de vendas</a>
        
 

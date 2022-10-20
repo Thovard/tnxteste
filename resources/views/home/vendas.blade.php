@@ -2,35 +2,30 @@
 
 @section('content')
     <div>
-        <div class="w-full h-16 bg-cyan-600	grid grid-cols-3 divide-x-0">
+        <div class="w-full h-14 bg-cyan-600	grid grid-cols-3 divide-x-0">
             <div
             class="
             
             order-2
             "> 
                 <h1 class=" 
-                titulo
-                absolute top-2
+
                 text-center
-                text-2xl
+                text-3xl
                 ">Central de Vendas</h1>
             </div>
-            <div class="
-            text-center order-1
-            ">
+            <div class="text-center order-1">
+
                 <a href="#" class="absolute top-2 left-0
-                bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-20">Historico
-                    de Vendas</a>
+                bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-20">Historico de Vendas</a>
             </div>
 
-            <div class="
-            text-center order-3
-            
-            ">
+            <div class="text-center order-3">
+
                 <a href="{{ route('home.index') }}" class="
                 absolute top-2 right-0
-                bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-28 ">Acessar
-                    Empresa</a>
+                bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-28 ">Acessar Empresa</a>
+
             </div>
         </div>
         <div class="w-full h-20 relative inset-y-32 ">
@@ -55,12 +50,10 @@
                     </select>
                 </div>
 
-                <div class="
-                relative inset-y-1">
+                <div class="relative inset-y-1">
 
 
                 <button type="button" class="
-                
                 bg-blue-500 hover:bg-blue-700 
                 text-white font-bold py-2 px-24
                  border border-blue-700 rounded"> Comprar </button>

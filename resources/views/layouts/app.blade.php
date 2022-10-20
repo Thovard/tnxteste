@@ -7,7 +7,7 @@
     <title>@yield('title') - Empresa</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="vanilla-masker.min.js" ></script>
+
 
 </head>
 <body class="bg-gray-900">
