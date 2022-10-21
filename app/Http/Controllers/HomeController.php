@@ -11,12 +11,15 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    protected $vendas;
     protected $empresa;
     protected $vendedor;
     protected $produtos;
 
-    public function __construct(Vendedor $vendedor, Empresas $empresa, Produtos $produtos)
+    public function __construct(Vendedor $vendedor, Empresas $empresa, Produtos $produtos, vendas $vendas)
     {
+        
+        $this->vendas = $vendas;
         $this->vendedor = $vendedor;
         $this->empresa = $empresa;
         $this->produtos = $produtos;
@@ -69,6 +72,7 @@ class HomeController extends Controller
          
  
     }
+    
     public function selects(Request $request) {
         $vendedor = ["vendedor" => Vendedor::where("empresas_id", $request->op)->get(),
         "resposta" => true,
@@ -79,4 +83,31 @@ class HomeController extends Controller
 return json_encode($vendedor);
 
     }
+
+public function historico() {
+
+    $vendas = $this->vendas->get();
+    
+    //$vendas = vendas::whereIn('id', $vendas)->get();
+    $result = [];
+     
+    foreach ($vendas as $venda ) {
+        $a['empresa'] =   $this->empresa->where('id', '=',$venda->Empresa)->first();
+        $a['vendedor'] = $this->vendedor->where('id' ,'=',$venda->Vendedor)->first();
+        $a['produto'] = $this->produtos->where('id' ,'=',$venda->produto)->first();
+        array_push($result, $a);
+    };
+ 
+    
+
+    
+     
+    
+    return view('home.historico', compact('result'));
+}
+
+
+
+
+
 }

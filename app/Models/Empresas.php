@@ -13,6 +13,11 @@ class Empresas extends Model
         'name',
         'CNPJ',
         'Telefone',
+        'cep',
+        'estado',
+        'cidade',
+        'bairro',
+        'Numero',
         'password'
     ];
 

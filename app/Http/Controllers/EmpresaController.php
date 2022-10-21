@@ -10,6 +10,7 @@ use App\Models\{
 };
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class EmpresaController extends Controller
 {
@@ -51,14 +52,26 @@ class EmpresaController extends Controller
     }
 
     // POST - create empresa
-    public function store(StoreUpdateEmpresasFormRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
-        $data['password'] = bcrypt($request->password);
+        
+          $a =    DB::table('empresas') -> insert([
+                'name' => $request->name ,
+                'CNPJ' => $request->cnpj ,
+                'Telefone' => $request -> telefone ,
+                'cep' => $request -> cep ,
+                'estado' => $request -> estado ,
+                'cidade' => $request -> cidade ,
+                'bairro' => $request -> bairro ,
+                'Numero' => $request -> numero ,
+                'password' => Hash::make($request -> password)  
+            ]); 
 
-        $this->empresa->create($data);
+           
+            
+      
+            return redirect()->route('home.index');
 
-        return redirect()->route('home.index');
     }
     
     public function edit($id)

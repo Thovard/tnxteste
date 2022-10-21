@@ -18,6 +18,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('CNPJ')->unique();
             $table->string('Telefone');
+            $table->string('cep');
+            $table->string('estado');
+            $table->string('cidade');
+            $table->string('bairro');
+            $table->string('Numero');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

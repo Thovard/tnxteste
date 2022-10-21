@@ -10,15 +10,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'vendas'])->name('vendas.home');
 route::post('/selects', [HomeController::class, 'selects'])->name('selects.home');
 route::post('/cadastro', [HomeController::class, 'store'])->name('vendas.store');
-route::get('/home', [HomeController::class, 'index'])->name('home.index');                                           //<-- home home
+route::get('/home', [HomeController::class, 'index'])->name('home.index');  
+route::get('/historico', [HomeController::class, 'historico'])->name('historico.home');                                         //<-- home home
 
 
 
 
 //empresa
+route::post('/empresa', [EmpresaController::class, 'store'])->name('empresa.store');
 Route::get('/empresas/{id}', [EmpresaController::class, 'show'])->name('empresa.show');
 route::get('/empresas', [EmpresaController::class, 'create_empresa'])->name('empresa.cadastroEmpresa');
-route::post('/empresas', [EmpresaController::class, 'store'])->name('empresa.store');
 route::get('/home/{id}/EditEmpresa',[EmpresaController::class, 'edit'])->name('empresa.edit');
     route::put('/home/{id}', [EmpresaController::class, 'update'])->name('empresa.update');
 Route::delete('/empresas/{id}', [EmpresaController::class, 'delete'])->name('empresa.delete');

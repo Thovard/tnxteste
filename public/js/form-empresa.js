@@ -1,4 +1,6 @@
 let inputs = document.querySelector(".clear")
+let buttonCompra = document.querySelector('#comprar');
+let _token = document.querySelector("input#csrf")
 $("#cep").change(function () {
 
     var cep = this.value.replace(/[^0-9]/, "");
@@ -12,31 +14,45 @@ $("#cep").change(function () {
 
 
     $.getJSON(url, function (dadosRetorno) {
-        //  console.log(dadosRetorno)
+       
         let validador = dadosRetorno.erro
+        console.log(validador)
         let bairro = dadosRetorno.bairro
         try {
             $('#cep').ready(function () {
                  if (validador == true) {
                     //habilitando escrita
+                    $("#endereco").val("");
                     $('#endereco').prop("disabled", false);
+                    $("#bairro").val("");
                     $('#bairro').prop("disabled", false);
+                    $("#cidade").val("");
                     $('#cidade').prop("disabled", false);
+                    $("#uf").val("");
                     $('#uf').prop("disabled", false);
+            
+                    $('#numero').prop("disabled", false);
 
-                } 
-                if (bairro != "") {
-                    $('#bairro').prop("disabled", true);
                 }
-                else if (bairro == "") {
+                else {
+                 if (bairro == "") {
+                    $('#uf').prop("disabled", true);
+                    $('#endereco').prop("disabled", true);
+                    $('#cidade').prop("disabled", true);
                     $('#bairro').prop("disabled", false);
                     $('#numero').prop("disabled", false);
+                }
+                else if (bairro != "") {
+                    $('#uf').prop("disabled", true);
+                    $('#endereco').prop("disabled", true);
+                    $('#cidade').prop("disabled", true);
+                    $('#bairro').prop("disabled", true);
                 }
             
                     //habilitando escrita
                     $('#numero').prop("disabled", false);
                 
-            })
+            }})
 
             //preenchendo campos com os dados do imput
             $("#endereco").val(dadosRetorno.logradouro);
@@ -48,9 +64,9 @@ $("#cep").change(function () {
     });
 });
 
-$("#cep").blur(function () {
+$("#cep").change(function () {
 
-    //  console.log(this.value)
+    console.log(this.value)
 
     if (this.value == "") {
         $("#endereco").val("");
@@ -99,3 +115,33 @@ $("#telefone").inputmask({
     mask: ['(+55) 9 9999-9999'],
     keepStatic: true
 });
+
+
+function SaveAction() {
+    let name =  $('#name').val();
+    let password = $('#password').val();
+    let cnpj = $("#cnpj").val();
+    let telefone = $("#telefone").val();
+    let cep = $("#cep").val();
+    let endereco = $("#endereco").val();
+    let cidade = $("#cidade").val();
+    let uf = $("#uf").val();
+    let numero = $("#numero").val();
+    let bairro = $("#bairro").val();
+
+    fetch('/empresa', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "dataType": 'json',
+            'X-CSRF-TOKEN': _token.value,
+        },
+        body: JSON.stringify({ name:name,password:password,cnpj:cnpj,telefone:telefone,cep:cep,endereco:endereco,cidade:cidade,estado:uf,numero:numero,bairro:bairro})
+    }).then((data) => {
+       console.log(data)
+       window.location.href = '/home'
+    })
+    
+}
+buttonCompra.addEventListener("click", SaveAction)
+

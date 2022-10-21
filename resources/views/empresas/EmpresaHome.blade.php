@@ -90,7 +90,7 @@
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="shadow bg-purple-500 hover:bg-red-600 text-sm focus:shadow-outline focus:outline-none text-white font-bold py-2 px-2 rounded ">
-                                    Deletar Empresa
+                                    Deletar usuario
                                 </button>
                             </form>
                         </td>
@@ -142,7 +142,7 @@
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="shadow bg-purple-500 hover:bg-red-600 text-sm focus:shadow-outline focus:outline-none text-white font-bold py-2 px-2 rounded  ">
-                                    Deletar Empresa
+                                    Deletar produto
                                 </button>
                             </form>
                     </tr>

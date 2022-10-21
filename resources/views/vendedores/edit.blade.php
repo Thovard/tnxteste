@@ -2,12 +2,17 @@
 
 @section('content')
 
+<div class="w-full h-10 bg-cyan-600	">
 <h1 
-class="text-center text-3xl font-semibold leading-tigh py-2 text-decoration: underline">
+class="
+     text-center text-2xl">
     Editando a Empresa: 
     {{ $vendedor->name }}
-    <a href="{{ route('vendedor.index', $vendedor->id)}}" class=" absolute top-2 left-1 h-auto w-auto text-sm text-reigth bg-green-200 hover:bg-green-500 rounded-full py-2 px-8">Voltar</a>
 </h1>
+    <a href="{{ route('vendedor.index', $vendedor->id)}}" class=" absolute top-0 left-0
+        bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-20">Voltar</a>
+
+</div>
 
 
 @if($errors->any())
@@ -18,12 +23,12 @@ class="text-center text-3xl font-semibold leading-tigh py-2 text-decoration: und
     </ul>
 
     @endif
-<div class="w-full bg-white shadow-md rounded px-8 py-12"> 
+
     <form action="{{ route('vendedor.update', $vendedor->id) }}" method="post" enctype="multipart/form-data">
             <input type="hidden" name="_method" value="PUT">
             @include('_partials.Vendedor_form')
     </form>
-    </div>
+
 
 
 

@@ -83,7 +83,7 @@ function SaveAction() {
     let optionProduto = produtos.value;
     let optionVendedor = vendedor.value;
     let optionEmpresas = empresas.value;
-    alert(_token.value)
+  
 
     fetch('/cadastro', {
         method: "POST",
@@ -96,6 +96,10 @@ function SaveAction() {
     }).then((data) => data.json()).then((data) => {
        
 })
+
+    empresa.value("")
+
+
 }
 buttonCompra.addEventListener("click", SaveAction)
     

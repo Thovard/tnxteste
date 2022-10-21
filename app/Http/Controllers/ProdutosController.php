@@ -74,11 +74,11 @@ class ProdutosController extends Controller
 
     public function edit_produto($id)
     {
-        
+        $empresa = $this->empresa->find($id);
         if (!$produtos = $this->produtos->find($id))
            return redirect()->route('home.index');
             
-        return view('produto.edit', compact('produtos'));
+        return view('produto.edit', compact('produtos', 'empresa'));
     }
 
     public function update_produto(Request $request, $id, Empresas $empresa, Produtos $produtos)

@@ -42,10 +42,40 @@ class StoreUpdateEmpresasFormRequest extends FormRequest
                 'max:17',
                 'min:17',
             ],
+            'cep' => [
+                'nullable',
+                'string',
+                'max:9',
+                'min:9',
+            ],            
+            'estado' => [
+                'nullable',
+                'string',
+                'max:9999',
+                'min:1',
+            ],           
+             'cidade' => [
+                'nullable',
+                'string',
+                'max:9999',
+                'min:1',
+            ],           
+             'bairro' => [
+                'nullable',
+                'string',
+                'max:99999',
+                'min:1',
+            ],           
+             'numero' => [
+                'nullable',
+                'string',
+                'max:99999',
+                'min:1',
+            ],
             'password' => [
                 'required',
                 'max:25',
-            ]
+            ],        
         ];
     }
 }

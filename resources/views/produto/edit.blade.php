@@ -2,13 +2,13 @@
 
 @section('content')
 
-<h1 
-class="text-center text-3xl font-semibold leading-tigh py-2 text-decoration: underline">
-    Editando a Empresa: 
-    {{ $produtos->name }}
-    <a href="{{ route('produto.index', $produtos->id)}}" class=" absolute top-2 left-1 h-auto w-auto text-sm text-reigth bg-green-200 hover:bg-green-500 rounded-full py-2 px-8">Voltar</a>
+<div class="w-full h-10 bg-cyan-600	">
+    <h1 class="
+     text-center text-2xl">Cadastro de Vendedor da Empresa: {{ $empresa->name}}</h1>
+<a href="{{ route('empresa.show', $empresa->id)}}" class=" absolute top-0 left-0
+    bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-20">Voltar</a>
 
-</h1>
+</div>
 
 
 @if($errors->any())
@@ -19,12 +19,12 @@ class="text-center text-3xl font-semibold leading-tigh py-2 text-decoration: und
     </ul>
 
     @endif
-<div class="w-full bg-white shadow-md rounded px-8 py-12">
+
     <form action="{{ route('produto.update', $produtos->id) }}" method="post" enctype="multipart/form-data">
             <input type="hidden" name="_method" value="PUT">
             @include('_partials.Produtos_form')
     </form>
-    </div>
+ 
 
 
 
