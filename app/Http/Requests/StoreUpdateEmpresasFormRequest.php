@@ -39,8 +39,8 @@ class StoreUpdateEmpresasFormRequest extends FormRequest
             'Telefone' => [
                 'nullable',
                 'string',
-                'max:15',
-                'min:8',
+                'max:17',
+                'min:17',
             ],
             'password' => [
                 'required',

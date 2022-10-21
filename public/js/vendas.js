@@ -32,7 +32,18 @@ function selectEmpresa( option ){
                 produtos.innerHTML += "<option value="+ produtosName.id + ">" + produtosName.name + "</option>"
             })
 
-            console.log(data)
+            let teste = vendedorName.length
+            $('#empresa').ready(function() {
+             
+             if (teste == 0) {
+                $('#vendedor').prop("disabled", true);
+                $('#produto').prop("disabled", true);
+             }
+               else if (teste != 0) {
+                 $('#vendedor').prop("disabled", false);
+                 $('#produto').prop("disabled", false);
+             }
+            });
          }
     })
 }
@@ -40,7 +51,16 @@ function selectEmpresa( option ){
 
 function OnclickEmpresa() {
    select = document.getElementById("empresa").value;
-   selectEmpresa(select)
+   selectEmpresa(select);
+
+   let opção = document.querySelector('#empresa').value;
+
+   let opção2 =  opção.vendedor
+   console.log(opção.value)
+   if (opção != "") {
+       $('#vendedor').prop("disabled", false);
+       $('#produto').prop("disabled", false);
+   }
     
 }
 
@@ -54,3 +74,5 @@ function DisabledSelect(name) {
     name = document.querySelector('#'+ name)
         name.disabled = true
 }
+
+    

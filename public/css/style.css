@@ -9,5 +9,14 @@
 .button-edit-emp {
     right: 40rem;
     width: 38rem;
-    bottom: 280px;
+    bottom: -174px;
+}
+.select-vendas {
+    width: 41rem;
+    left: 150px;
+}
+.caixa-vendas {
+    padding-top: 100px;
+    padding-bottom: 100px;
+
 }
