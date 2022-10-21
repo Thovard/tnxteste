@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 //home
 Route::get('/', [HomeController::class, 'vendas'])->name('vendas.home');
+route::post('/selects', [HomeController::class, 'selects'])->name('selects.home');
 route::post('/cadastro', [HomeController::class, 'store'])->name('vendas.store');
 route::get('/home', [HomeController::class, 'index'])->name('home.index');                                           //<-- home home
 

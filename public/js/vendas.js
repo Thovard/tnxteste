@@ -11,7 +11,7 @@ let produtos = document.querySelector("select#produto")
 let buttonCompra = document.querySelector('#comprar');
 
 function selectEmpresa( option ){
-    fetch('/cadastro', {
+    fetch('/selects', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -47,7 +47,7 @@ function selectEmpresa( option ){
                  $('#produto').prop("disabled", false);
              }
             });
-            alert(produtos.value)
+            
          }
     })
 }
@@ -60,7 +60,7 @@ function OnclickEmpresa() {
    let opção = document.querySelector('#empresa').value;
 
    let opção2 =  opção.vendedor
-   console.log(opção.value)
+ 
    if (opção != "") {
        $('#vendedor').prop("disabled", false);
        $('#produto').prop("disabled", false);
@@ -83,7 +83,7 @@ function SaveAction() {
     let optionProduto = produtos.value;
     let optionVendedor = vendedor.value;
     let optionEmpresas = empresas.value;
-    
+    alert(_token.value)
 
     fetch('/cadastro', {
         method: "POST",
@@ -92,9 +92,9 @@ function SaveAction() {
             "dataType": 'json',
             'X-CSRF-TOKEN': _token.value,
         },
-        body: JSON.stringify({ op:option })
+        body: JSON.stringify({ produto:optionProduto,vendedor:optionVendedor,empresa:optionEmpresas })
     }).then((data) => data.json()).then((data) => {
-
+       
 })
 }
 buttonCompra.addEventListener("click", SaveAction)

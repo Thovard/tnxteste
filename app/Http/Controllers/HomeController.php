@@ -54,23 +54,29 @@ class HomeController extends Controller
 
         return view('home.vendas', compact('empresa', 'vendedor', 'produtos'));
     }
-    public function store(Request $resquest)
+    public function store(Request $request)
     {
-       $vendedor = ["vendedor" => Vendedor::where("empresas_id", $resquest->op)->get(),
-                        "resposta" => true,
-                    "produtos"  => Produtos::where("empresas_id", $resquest->op)->get(), 
-                        
-    ];
-
-        return json_encode($vendedor);
-   
+        DB::table('vendas') -> insert([
+            'Empresa' => $request -> empresa,
+            'Vendedor' => $request -> vendedor,
+            'produto' => $request -> produto
+        ]);
 
 
-    //  $teste = [
-    //    "resposta" => true
-    //  ];
-    //  return json_encode($teste);
+        return json_encode($resposta = [
+            "resposta" => 'foi!'
+        ] );
+         
+ 
     }
-    
+    public function selects(Request $request) {
+        $vendedor = ["vendedor" => Vendedor::where("empresas_id", $request->op)->get(),
+        "resposta" => true,
+    "produtos"  => Produtos::where("empresas_id", $request->op)->get(), 
+        
+];
 
+return json_encode($vendedor);
+
+    }
 }
