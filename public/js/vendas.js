@@ -2,10 +2,13 @@ let _token = document.querySelector("input#csrf");
 
 var select = null;
 
+var empresas = document.querySelector("#empresa")
+
 let vendedor = document.querySelector("select#vendedor")
 
 let produtos = document.querySelector("select#produto")
-    
+
+let buttonCompra = document.querySelector('#comprar');
 
 function selectEmpresa( option ){
     fetch('/cadastro', {
@@ -44,6 +47,7 @@ function selectEmpresa( option ){
                  $('#produto').prop("disabled", false);
              }
             });
+            alert(produtos.value)
          }
     })
 }
@@ -75,4 +79,23 @@ function DisabledSelect(name) {
         name.disabled = true
 }
 
+function SaveAction() {
+    let optionProduto = produtos.value;
+    let optionVendedor = vendedor.value;
+    let optionEmpresas = empresas.value;
+    
+
+    fetch('/cadastro', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "dataType": 'json',
+            'X-CSRF-TOKEN': _token.value,
+        },
+        body: JSON.stringify({ op:option })
+    }).then((data) => data.json()).then((data) => {
+
+})
+}
+buttonCompra.addEventListener("click", SaveAction)
     
