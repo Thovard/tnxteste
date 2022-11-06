@@ -44,3 +44,13 @@ Route::delete('/produto/{id}', [ProdutosController::class, 'delete_produto'])->n
 route::get('/teste', [HomeController::class, 'teste'])->name('home.teste');
 
 
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

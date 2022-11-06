@@ -51,15 +51,23 @@ class EmpresaController extends Controller
         return view('empresas.EmpresaHome', compact('empresa', 'vendedor', 'produtos'));
     }
 
+    public function ClerarNumber($dados) {
+        
+        
+        $dados = preg_replace('/[^a-z0-9]/i', '_', $dados);
+
+        return $dados;
+    }
+
     // POST - create empresa
     public function store(Request $request)
     {
-        
+
           $a =    DB::table('empresas') -> insert([
                 'name' => $request->name ,
-                'CNPJ' => $request->cnpj ,
-                'Telefone' => $request -> telefone ,
-                'cep' => $request -> cep ,
+                'CNPJ' => $this->ClerarNumber($request->cnpj) ,
+                'Telefone' => $this->ClerarNumber($request -> telefone) ,
+                'cep' => $this->ClerarNumber($request -> cep),
                 'estado' => $request -> estado ,
                 'cidade' => $request -> cidade ,
                 'bairro' => $request -> bairro ,
